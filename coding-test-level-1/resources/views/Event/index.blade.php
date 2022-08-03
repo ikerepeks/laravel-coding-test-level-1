@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-12 m-3 d-flex justify-content-end">
                     <hr>
-                    <button class="btn btn-primary"><i class="las la-plus"></i></button>
+                    <a href="{{ Route('create') }}"><button class="btn btn-primary"><i class="las la-plus"></i></button></a>
                 </div>
                 <div class="col-12">
                     <table class="w-100">

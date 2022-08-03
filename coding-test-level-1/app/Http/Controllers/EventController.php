@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -18,18 +19,24 @@ class EventController extends Controller
         return view('Event.show_event', compact('event'));
     }
 
+    public function create(){
+        return view('Event.new_event');
+    }
+
     public function edit($id){
         $event = Event::find($id);
         return view('Event.edit_event', compact('event'));
     }
 
-    public function create(Request $request){
+    public function put(Request $request){
         Event::create([
             'name' => $request->name,
-            'slug' => $request->slug,
+            'slug' => Str::random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+        return redirect()->back()->with('success', 'Data Update Succesful');
     }
 
     public function update($id,Request $request){
