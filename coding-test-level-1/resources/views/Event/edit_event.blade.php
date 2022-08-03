@@ -2,6 +2,7 @@
 @section('content')
     <div class="album text-muted">
         <div class="container mt-2 rounded bg-secondary p-5">
+            <h2 class="text-white">Edit Event</h2>
             <form action="{{ Route('update', $event->id) }}" method="POST">
                 <div class="row">
                     @method('PATCH') @csrf

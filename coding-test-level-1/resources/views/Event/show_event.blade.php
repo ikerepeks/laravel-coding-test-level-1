@@ -2,6 +2,7 @@
 @section('content')
     <div class="album text-muted">
         <div class="container mt-2 rounded bg-secondary p-5">
+            <h2 class="text-white">Show Event</h2>
            <div class="row">
                 <div class="col-6 mb-2">
                     <label class="form-control-label text-white">ID:</label>
