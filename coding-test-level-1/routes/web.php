@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/event/index', [EventController::class, 'index'])->name('index');
+Route::get('/event/{id}', [EventController::class, 'show'])->name('show');
+Route::get('/event/{id}/edit', [EventController::class, 'edit'])->name('edit');
+Route::patch('/event/{id}/edit', [EventController::class, 'update'])->name('update');
