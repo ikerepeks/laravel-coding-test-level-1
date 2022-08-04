@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/v1/events','EventAPIController@index')->name('APIEventindex');
-Route::get('/v1/events/active-events','EventAPIController@active')->name('APIEventactive');
-Route::get('/v1/events/{id}','EventAPIController@show')->name('APIEventshow');
-Route::post('/v1/events','EventAPIController@create')->name('APIEventcreate');
-Route::put('/v1/events/{id}','EventAPIController@update')->name('APIEventupdate');
-Route::patch('/v1/events/{id}','EventAPIController@partial')->name('APIEventpartial');
-Route::delete('/v1/event/{id}','EventAPIController@delete')->name('APIEventdelete');
+Route::get('/v1/events',[EventAPIController::class , 'index'])->name('APIEventindex');
+Route::get('/v1/events/active-events', [EventAPIController::class , 'index'] )->name('APIEventactive');
+Route::get('/v1/events/{id}',[EventAPIController::class , 'index'])->name('APIEventshow');
+Route::post('/v1/events',[EventAPIController::class , 'index'])->name('APIEventcreate');
+Route::put('/v1/events/{id}',[EventAPIController::class , 'index'])->name('APIEventupdate');
+Route::patch('/v1/events/{id}',[EventAPIController::class , 'index'])->name('APIEventpartial');
+Route::delete('/v1/event/{id}',[EventAPIController::class , 'index'])->name('APIEventdelete');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
