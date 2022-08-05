@@ -11,7 +11,7 @@
                     <a href="{{ Route('create') }}"><button class="btn btn-primary"><i class="las la-plus"></i></button></a>
                 </div>
                 <div class="col-12">
-                    <table class="w-100">
+                    <table class="w-100" id="event-table">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -19,24 +19,24 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @forelse($events as $key=>$event)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td><a href="{{ Route('show', $event->id) }}">{{ $event->name }}</a></td>
-                                    <td>
-                                        <a href="{{ Route('edit', $event->id) }}"><i class="las la-edit"></i></i></a>
-                                        <a><i class="las la-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3"></td>
-                                </tr>
-                            @endforelse
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <form action="{{ Route('delete') }}" method="POST">
+                @method('DELETE') @csrf
+                <input type="hidden" id="deleteid" name="id">
+                <div class="modal-body">
+                    <h3>You sure you want to delete event?</h3>
+                </div>
+                <div class="modal-footer"><button type="submit" class="btn btn-danger">Delete</button></div>
+                </form>
             </div>
         </div>
     </div>
